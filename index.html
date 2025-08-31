@@ -3,7 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Prismxx — Plans</title>
+  <title>Prismxx — About Me</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
   <style>
     :root{
@@ -17,12 +19,51 @@
       --accent3: #22c55e;
     }
     *{box-sizing:border-box}
-    body{margin:0; font-family:Poppins, sans-serif; color:var(--text); background: var(--bg);}
-    .container{max-width:1000px; margin:0 auto; padding:48px 20px}
-    .card{background: var(--glass); border:1px solid var(--border); backdrop-filter: blur(10px); border-radius:20px; padding:28px; margin-bottom:32px}
+    html,body{height:100%}
+    body{
+      margin:0; font-family:Poppins,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial; color:var(--text);
+      background: radial-gradient(1200px 600px at 10% -10%, rgba(124,58,237,.35), transparent 70%),
+                  radial-gradient(1000px 500px at 110% 10%, rgba(6,182,212,.35), transparent 70%),
+                  linear-gradient(160deg, #0b0f1a 0%, #0a0d17 60%, #0b0f1a 100%);
+    }
+    .container{max-width:1000px; margin:0 auto; padding:48px 20px 72px}
+    .card{
+      background: var(--glass);
+      border: 1px solid var(--border);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 28px;
+      box-shadow: 0 10px 30px rgba(0,0,0,.25);
+    }
+    header{display:flex; align-items:center; justify-content:space-between; gap:16px; margin-bottom:28px}
+    .logo{display:flex; align-items:center; gap:10px; font-weight:700; letter-spacing:.5px}
+    .logo .dot{width:12px; height:12px; border-radius:50%; background:linear-gradient(45deg,var(--accent1),var(--accent2))}
+    .btn{
+      display:inline-block; padding:10px 16px; border-radius:999px; text-decoration:none; color:var(--text);
+      border:1px solid var(--border); background:linear-gradient(90deg, rgba(124,58,237,.25), rgba(6,182,212,.25));
+      transition: transform .15s ease, box-shadow .15s ease;
+    }
+    .btn:hover{transform: translateY(-2px); box-shadow:0 6px 18px rgba(124,58,237,.25)}
 
-    /* menú barras */
-    .nav-bars{display:flex; flex-direction:column; gap:16px; margin-bottom:32px;}
+    .hero{display:grid; grid-template-columns:1.2fr .8fr; gap:22px; align-items:stretch}
+    @media (max-width: 860px){ .hero{grid-template-columns:1fr} }
+
+    .title{font-size:clamp(28px, 3.2vw, 44px); margin:6px 0 8px; line-height:1.15;}
+    .subtitle{color:var(--muted); margin:0 0 18px}
+    .gradient-text{background: linear-gradient(90deg,var(--accent1),var(--accent2),var(--accent3)); -webkit-background-clip:text; background-clip:text; color:transparent}
+
+    .pill{display:inline-flex; align-items:center; gap:8px; font-size:12px; padding:6px 10px; border-radius:999px; border:1px solid var(--border); color:var(--muted)}
+    .grid{display:grid; gap:16px}
+
+    .skills{display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-top:14px}
+    @media (max-width: 700px){ .skills{grid-template-columns:repeat(2,1fr)} }
+
+    .skill{display:flex; flex-direction:column; align-items:center; gap:10px; padding:18px; background:rgba(255,255,255,0.06); border:1px solid var(--border); border-radius:16px}
+    .skill img{width:42px; height:42px; filter: drop-shadow(0 6px 12px rgba(0,0,0,.25));}
+    .skill span{font-size:14px; color:var(--muted)}
+
+    /* NAVIGATION BARS */
+    .nav-bars{display:flex; flex-direction:column; gap:16px; margin:30px 0;}
     .nav-bars a{
       display:block; text-align:center; text-decoration:none;
       font-weight:600; padding:16px; border-radius:14px;
@@ -33,29 +74,73 @@
     }
     .nav-bars a:hover{transform:scale(1.03); color:var(--accent2)}
 
-    h2{margin-top:0}
-    .pricing{display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:20px}
-    @media(max-width:768px){.pricing{grid-template-columns:1fr}}
+    .pricing{display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:22px}
+    @media (max-width: 860px){ .pricing{grid-template-columns:1fr} }
 
-    .price-card{padding:20px; border:1px solid var(--border); border-radius:16px; background:rgba(255,255,255,0.05)}
-    .contact{margin-top:30px; padding:20px; border:1px solid var(--border); border-radius:16px; background:rgba(255,255,255,0.08)}
-    .btn{display:inline-block; margin-top:10px; padding:10px 16px; border-radius:999px; border:1px solid var(--border); text-decoration:none; color:var(--text); background:linear-gradient(90deg, rgba(124,58,237,.25), rgba(6,182,212,.25))}
-    .btn:hover{color:var(--accent2)}
+    .price-card{display:flex; flex-direction:column; gap:16px}
+    .check{width:18px; height:18px; border-radius:4px; display:inline-grid; place-content:center; background:linear-gradient(45deg,var(--accent2),var(--accent3))}
+    .check svg{width:12px; height:12px;}
+    ul{list-style:none; padding:0; margin:0; display:grid; gap:10px}
+    .muted{color:var(--muted)}
+
+    .contact-section{margin-top:30px; text-align:center}
+    .contact-section a{display:inline-block; padding:12px 24px; border-radius:12px; background:linear-gradient(45deg,var(--accent1),var(--accent2)); color:#fff; text-decoration:none; font-weight:600; transition:0.3s;}
+    .contact-section a:hover{transform:translateY(-2px);}
+
+    footer{margin-top:36px; text-align:center; color:var(--muted); font-size:13px}
   </style>
 </head>
 <body>
   <div class="container">
+    <header>
+      <div class="logo card" style="padding:10px 14px">
+        <span class="dot"></span>
+        <span>Prismxx</span>
+      </div>
+      <a class="btn" href="#contact">Contact</a>
+    </header>
 
     <!-- ABOUT -->
-    <section id="about" class="card">
-      <h2>About Me</h2>
-      <p>Soy Prismxx, me dedico a la creación de cuentas, hosting y bots personalizados. Trabajo con tecnologías modernas y busco ofrecer soluciones simples pero potentes.</p>
+    <section class="hero">
+      <div class="card">
+        <span class="pill">About me</span>
+        <h1 class="title">Hi, I am <span class="gradient-text">Prismxx</span></h1>
+        <p class="subtitle">I’m passionate about building custom bots, automation, and smart integrations for communities and businesses.</p>
+        <p class="muted">From Discord automations to web backends, I enjoy crafting tools that are fast, reliable, and easy to use.</p>
+      </div>
+      <div class="card grid" style="place-content:center; text-align:center">
+        <div style="font-size:14px; color:var(--muted)">Gradient vibes</div>
+        <div style="font-size:48px; font-weight:700" class="gradient-text">Create. Automate. Scale.</div>
+      </div>
     </section>
 
     <!-- TECH -->
-    <section id="tech" class="card">
-      <h2>Tech I Work With</h2>
-      <p>Trabajo con Node.js, Discord.js, HTML, CSS, y más herramientas enfocadas en desarrollo web y bots.</p>
+    <section class="card">
+      <div class="pill">Tech I work with</div>
+      <h2 style="margin:10px 0 6px">Currently I can program in these languages & platforms</h2>
+      <p class="muted" style="margin:0 0 12px">Always learning, always shipping.</p>
+      <div class="skills">
+        <div class="skill">
+          <img alt="HTML5" src="https://cdn.simpleicons.org/html5" />
+          <strong>HTML</strong>
+          <span>Markup & UI</span>
+        </div>
+        <div class="skill">
+          <img alt="JavaScript" src="https://cdn.simpleicons.org/javascript" />
+          <strong>JavaScript</strong>
+          <span>Web & Bots</span>
+        </div>
+        <div class="skill">
+          <img alt="Python" src="https://cdn.simpleicons.org/python" />
+          <strong>Python</strong>
+          <span>Scripting & APIs</span>
+        </div>
+        <div class="skill">
+          <img alt="Discord API" src="https://cdn.simpleicons.org/discord" />
+          <strong>Discord API</strong>
+          <span>Bot development</span>
+        </div>
+      </div>
     </section>
 
     <!-- NAVIGATION BARS -->
@@ -67,64 +152,78 @@
 
     <!-- ACCOUNTS -->
     <section id="accounts" class="card">
-      <h2>Accounts</h2>
+      <div class="pill">Accounts</div>
+      <h2>Choose your account plan</h2>
       <div class="pricing">
-        <div class="price-card">
+        <div class="card price-card">
           <h3>Account Basic</h3>
           <p>$5 / lifetime</p>
         </div>
-        <div class="price-card">
+        <div class="card price-card">
           <h3>Account Premium</h3>
           <p>$15 / lifetime</p>
         </div>
       </div>
-      <div class="contact">
+      <div class="contact-section">
         <h3>Contact Me</h3>
-        <p>¿Quieres comprar cuentas o tienes dudas? Contáctame en Discord.</p>
-        <a href="https://discord.com/users/TU_ID" class="btn">Contactar</a>
+        <a href="https://discord.com/users/1187434528810209470" target="_blank">Contact for Accounts</a>
       </div>
     </section>
 
     <!-- HOSTING -->
     <section id="hosting" class="card">
-      <h2>Hosting</h2>
+      <div class="pill">Hosting</div>
+      <h2>Hosting options</h2>
       <div class="pricing">
-        <div class="price-card">
+        <div class="card price-card">
           <h3>Plan 1</h3>
-          <p>$3 / mes</p>
+          <p>$3 / month</p>
         </div>
-        <div class="price-card">
+        <div class="card price-card">
           <h3>Plan 2</h3>
-          <p>$7 / mes</p>
+          <p>$7 / month</p>
         </div>
       </div>
-      <div class="contact">
+      <div class="contact-section">
         <h3>Contact Me</h3>
-        <p>¿Buscas hosting confiable? Escríbeme en Discord.</p>
-        <a href="https://discord.com/users/TU_ID" class="btn">Contactar</a>
+        <a href="https://discord.com/users/1187434528810209470" target="_blank">Contact for Hosting</a>
       </div>
     </section>
 
     <!-- BOTS -->
     <section id="bots" class="card">
-      <h2>Bots</h2>
+      <div class="pill">Bots</div>
+      <h2>Custom bot packages</h2>
       <div class="pricing">
-        <div class="price-card">
-          <h3>Bot Básico</h3>
+        <div class="card price-card">
+          <h3>Bot Basic</h3>
           <p>$10</p>
         </div>
-        <div class="price-card">
+        <div class="card price-card">
           <h3>Bot Premium</h3>
           <p>$25</p>
         </div>
       </div>
-      <div class="contact">
+      <div class="contact-section">
         <h3>Contact Me</h3>
-        <p>¿Quieres un bot a medida para tu servidor? Escríbeme en Discord.</p>
-        <a href="https://discord.com/users/TU_ID" class="btn">Contactar</a>
+        <a href="https://discord.com/users/1187434528810209470" target="_blank">Contact for Bots</a>
       </div>
     </section>
 
+    <!-- CONTACT -->
+    <div class="contact-section" id="contact">
+      <h2>Send message in Discord – Contact me</h2>
+      <p>(Only if you are interested in buying)</p>
+      <a href="https://discord.com/users/1187434528810209470" target="_blank">Contact me</a>
+    </div>
+
+    <footer>
+      © <span id="year"></span> Prismxx • Built with love for automations
+    </footer>
   </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
